@@ -29,7 +29,6 @@ package com.wurmonline.client.renderer.gui;
 
 import java.util.Locale;
 
-//import com.wurmonline.client.renderer.PickData;
 import com.wurmonline.client.resources.textures.ResourceTextureLoader;
 
 public class BetterMapWindow extends WWindow {
