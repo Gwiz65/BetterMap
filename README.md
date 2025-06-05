@@ -4,7 +4,7 @@ A Better Map for Wurm Unlimited
 - **BetterMap Features:**
   - Higher resolution isometric server map
   - Map window is resizable and location/size is saved between game sessions
-  - Map is zoomable (scroll wheel) and draggable when zoomed in (right click + drag)
+  - Map is zoomable (scroll wheel) and draggable when zoomed in (left click + drag)
   - Provides map markers for Start Towns, Deeds and Soulfall Stones with names displayed on mouseover (if allowed by server owner)
   - Start Towns indicated with a green marker, Deeds indicated with a yellow marker and Soulfall Stones indicated with a blue marker
  
