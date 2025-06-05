@@ -6,7 +6,7 @@ A Better Map for Wurm Unlimited
   - Map window is resizable and location/size is saved between game sessions
   - Map is zoomable (scroll wheel) and draggable  (right click + drag)
   - Provides map markers for Start Towns, Deeds and Soulfall Stones with names displayed on mouseover
-  - Start Towns use a green marker, deeds use a yellow marker and Soulfall Stones ues a blue marker
+  - Start Towns use a green marker, deeds use a yellow marker and Soulfall Stones use a blue marker
  
  - **Installation**
    - Needs Ago's Client ModLauncher installed
