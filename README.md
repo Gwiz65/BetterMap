@@ -4,7 +4,7 @@ A Better Map for Wurm Unlimited
 - **BetterMap Features:**
   - Higher resolution isometric server map
   - Map window is resizable and location/size is saved between game sessions
-  - Map is zoomable (scroll wheel) and dragable (right click + drag)
+  - Map is zoomable (scroll wheel) and draggable  (right click + drag)
   - Provides markers for Start Towns, Deeds and Soulfall Stones with names displayed on mouseover
  
  - **Installation**
