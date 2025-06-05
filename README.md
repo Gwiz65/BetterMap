@@ -8,9 +8,9 @@ A Better Map for Wurm Unlimited
   - Provides markers for Start Towns, Deeds and Soulfall Stones with names displayed on mouseover
  
  - **Installation**
-   - Needs Ago's Client ModLauncher installed.
-   - Needs Ago's ServerPack Client mod.
-   - Extract bettermap-x.x.zip into WurmLauncher directory.
+   - Needs Ago's Client ModLauncher installed
+   - Needs Ago's ServerPack Client mod
+   - Extract bettermap-x.x.zip into WurmLauncher directory
 
 - **Starting BetterMap**
   - BetterMap can be toggled on/off from the Main Menu (esc)
