@@ -11,7 +11,7 @@ A Better Map for Wurm Unlimited
  - **Installation**
    - Needs Ago's Client ModLauncher installed
    - Needs Ago's ServerPack Client mod installed
-   - Needs [BetterMapServer mod](https://github.com/Gwiz65/BetterMapServer/releases/tag/1.0) installed on the server
+   - Needs [BetterMapServer mod](https://github.com/Gwiz65/BetterMapServer/releases/latest) installed on the server
    - Extract bettermap-x.x.zip into WurmLauncher directory
 
 - **Starting BetterMap**
