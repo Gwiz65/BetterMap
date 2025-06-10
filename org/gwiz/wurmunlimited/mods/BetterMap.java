@@ -53,7 +53,7 @@ import javassist.NotFoundException;
 
 public class BetterMap implements WurmClientMod, Initable, Versioned, ConsoleListener {
 
-	private static final String version = "1.0";
+	private static final String version = "1.1";
 	private BetterMapWindow betterMapWindow;
 
 	@CallbackApi
@@ -116,7 +116,7 @@ public class BetterMap implements WurmClientMod, Initable, Versioned, ConsoleLis
 					+ "setMapWindow(this.betterMapWindow); }");
 			// hook into hud addComponent to load on window open
 			ctHeadsUpDisplay.getDeclaredMethod("addComponent")
-					.insertAfter("if (comp == this.betterMapWindow) this.betterMapWindow.load();");
+					.insertAfter("if ($1 == this.betterMapWindow) this.betterMapWindow.load();");
 		} catch (CannotCompileException | NotFoundException e) {
 			throw new RuntimeException(e);
 		}
