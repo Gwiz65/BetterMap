@@ -121,5 +121,4 @@ public class BetterMap implements WurmClientMod, Initable, Versioned, ConsoleLis
 			throw new RuntimeException(e);
 		}
 	}
-
 }
