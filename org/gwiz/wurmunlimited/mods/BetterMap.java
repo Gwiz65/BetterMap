@@ -108,17 +108,18 @@ public class BetterMap implements WurmClientMod, Initable, Versioned, ConsoleLis
 			ctHeadsUpDisplay.addField(
 					new CtField(hookClassPool.getCtClass("com.wurmonline.client.renderer.gui.BetterMapWindow"),
 							"betterMapWindow", ctHeadsUpDisplay));
-			ctHeadsUpDisplay.getDeclaredMethod("init").insertAfter("{ this.betterMapWindow = new com.wurmonline."
-					+ "client.renderer.gui.BetterMapWindow(); this.hudSettings.registerComponent(\"Better Map Window\", "
-					+ "this.betterMapWindow); this.mainMenu.registerComponent(\"Better Map\", this.betterMapWindow); "
-					+ "this.savePosManager.registerAndRefresh(this.betterMapWindow, \"bettermap\"); this.hideComponent("
-					+ "this.betterMapWindow); this.mainMenu.setEnabled(this.betterMapWindow, false); this.bettermap."
-					+ "setMapWindow(this.betterMapWindow); }");
+			ctHeadsUpDisplay.getDeclaredMethod("init").insertAfter("{ $0.betterMapWindow = new com.wurmonline.client."
+					+ "renderer.gui.BetterMapWindow(); $0.hudSettings.registerComponent(\"Better Map Window\", "
+					+ "$0.betterMapWindow); $0.mainMenu.registerComponent(\"Better Map\", $0.betterMapWindow); "
+					+ "$0.savePosManager.registerAndRefresh($0.betterMapWindow, \"bettermap\"); "
+					+ "$0.hideComponent($0.betterMapWindow); $0.mainMenu.setEnabled($0.betterMapWindow, false); "
+					+ "$0.bettermap.setMapWindow($0.betterMapWindow); }");
 			// hook into hud addComponent to load on window open
 			ctHeadsUpDisplay.getDeclaredMethod("addComponent")
-					.insertAfter("if ($1 == this.betterMapWindow) this.betterMapWindow.load();");
+					.insertAfter("if ($1 == $0.betterMapWindow) $0.betterMapWindow.load();");
 		} catch (CannotCompileException | NotFoundException e) {
 			throw new RuntimeException(e);
 		}
 	}
+
 }
