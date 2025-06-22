@@ -41,13 +41,13 @@ public class BetterMapMarker {
 		this.type = type;
 		switch (type) {
 		case 1:
-			this.textureButton = new TextureButton("AnnotationIcon11", 16, 16, worldX, worldY, name, 0, 0);
+			this.textureButton = new TextureButton("AnnotationIcon11", 16, 16, worldX, worldY, name, 5, 6);
 			break;
 		case 2:
-			this.textureButton = new TextureButton("AnnotationIcon12", 16, 16, worldX, worldY, name, 0, 0);
+			this.textureButton = new TextureButton("AnnotationIcon12", 16, 16, worldX, worldY, name, 5, 6);
 			break;
 		default:
-			this.textureButton = new TextureButton("AnnotationIcon15", 16, 16, worldX, worldY, name, 0, 0);
+			this.textureButton = new TextureButton("AnnotationIcon15", 16, 16, worldX, worldY, name, 5, 6);
 		}
 		this.textureButton.loadTexture();
 		this.worldX = worldX;

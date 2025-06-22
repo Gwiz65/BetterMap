@@ -110,10 +110,12 @@ public class BetterMapView extends FlexComponent {
 			for (int i = 0; i < this.markerList.size(); ++i) {
 				this.markerList.get(i).textureButton.setLocalPositionX((int) Math.round(
 						(((((this.markerList.get(i).worldX * (4096.0F / (hud.getWorld().getWorldSize()))) / 4096.0F)
-								* 1000.0F) - this.map_x) / (this.zoomFactor * 50.0F)) * (this.parentWidth - 6.0F)));
+								* 1000.0F) - this.map_x - this.zoomFactor) / (this.zoomFactor * 50.0F))
+								* (this.parentWidth - 6.0F)));
 				this.markerList.get(i).textureButton.setLocalPositionY((int) Math.round(
 						(((((this.markerList.get(i).worldY * (4096.0F / (hud.getWorld().getWorldSize()))) / 4096.0F)
-								* 1000.0F) - this.map_y) / (this.zoomFactor * 50.0F)) * (this.parentHeight - 37.0F)));
+								* 1000.0F) - this.map_y - this.zoomFactor - 1.0F) / (this.zoomFactor * 50.0F))
+								* (this.parentHeight - 37.0F)));
 				this.markerList.get(i).gameTick(this.x, this.y);
 				this.markerList.get(i).render(queue);
 			}
