@@ -26,3 +26,4 @@ A Better Map for Wurm Unlimited
 - **Release Notes:**
   - Release 1.0 - Initial release.
   - Release 1.1 - Fixed conflicts with other mods
+  - Release 1.2 - Improved marker accuracy
