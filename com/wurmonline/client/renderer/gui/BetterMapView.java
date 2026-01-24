@@ -107,15 +107,15 @@ public class BetterMapView extends FlexComponent {
 		super.renderComponent(queue, alpha);
 		if (this.texture != null) {
 			Renderer.texturedQuadAlphaBlend(queue, this.texture, 1.0F, 1.0F, 1.0F, 1.0F, this.x, this.y,
-					 this.parentWidth - 6.0F,  this.parentHeight - 37.0F,  this.map_x * 0.001F,
-					this.map_y * 0.001F,  this.zoomFactor / 20.0F, this.zoomFactor / 20.0F);
+					this.parentWidth - 6.0F, this.parentHeight - 37.0F, this.map_x * 0.001F, this.map_y * 0.001F,
+					this.zoomFactor / 20.0F, this.zoomFactor / 20.0F);
 			for (BetterMapMarker element : this.markerList) {
-				element.textureButton.setLocalPositionX((int) Math
-						.round((((((double) element.worldX / hud.getWorld().getWorldSize()) * 1000.0)
-								- this.map_x + 0.2) / (this.zoomFactor * 50.0)) * (this.parentWidth - 6.0)));
+				element.textureButton.setLocalPositionX((int) Math.round(
+						(((((double) element.worldX / hud.getWorld().getWorldSize()) * 1000.0) - this.map_x + 0.2)
+								/ (this.zoomFactor * 50.0)) * (this.parentWidth - 6.0)));
 				element.textureButton.setLocalPositionY((int) Math
-						.round(((((double) element.worldY / hud.getWorld().getWorldSize() * 1000.0)
-								- this.map_y - 0.7) / (this.zoomFactor * 50.0)) * (this.parentHeight - 37.0)));
+						.round(((((double) element.worldY / hud.getWorld().getWorldSize() * 1000.0) - this.map_y - 0.7)
+								/ (this.zoomFactor * 50.0)) * (this.parentHeight - 37.0)));
 				element.gameTick(this.x, this.y);
 				element.render(queue);
 			}
