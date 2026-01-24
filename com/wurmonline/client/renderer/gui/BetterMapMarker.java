@@ -36,18 +36,21 @@ public class BetterMapMarker {
 	public final int worldX;
 	public final int worldY;
 	public final int type;
+	
+//	TextureButton test = new TextureButton("img.iconsheet.buttons0", 32, 32, 240, 5, 
+//			"Toggle village annotations", 3, 21, 8, 0, 512, 512, true);
 
 	public BetterMapMarker(String name, int worldX, int worldY, int type) {
 		this.type = type;
 		switch (type) {
 		case 1:
-			this.textureButton = new TextureButton("AnnotationIcon11", 16, 16, worldX, worldY, name, 5, 6);
+			this.textureButton = new TextureButton("AnnotationIcon11", 16, 16, worldX, worldY, name, -8, -8);
 			break;
 		case 2:
-			this.textureButton = new TextureButton("AnnotationIcon12", 16, 16, worldX, worldY, name, 5, 6);
+			this.textureButton = new TextureButton("AnnotationIcon12", 16, 16, worldX, worldY, name, -8, -8);
 			break;
 		default:
-			this.textureButton = new TextureButton("AnnotationIcon15", 16, 16, worldX, worldY, name, 5, 6);
+			this.textureButton = new TextureButton("AnnotationIcon15", 16, 16, worldX, worldY, name, -8, -8);
 		}
 		this.textureButton.loadTexture();
 		this.worldX = worldX;

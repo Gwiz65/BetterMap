@@ -53,7 +53,7 @@ public class BetterMapView extends FlexComponent {
 	public BetterMapView() {
 		super("BetterMapView");
 		this.texture = null;
-		this.setInitialSize(hud.getWidth(), hud.getHeight(), false);
+		this.setInitialSize(hud.getHeight(), hud.getHeight(), false);
 		this.zoomFactor = 20;
 		this.map_x = 0;
 		this.map_y = 0;
@@ -105,17 +105,15 @@ public class BetterMapView extends FlexComponent {
 		super.renderComponent(queue, alpha);
 		if (this.texture != null) {
 			Renderer.texturedQuadAlphaBlend(queue, this.texture, 1.0F, 1.0F, 1.0F, 1.0F, (float) this.x, (float) this.y,
-					(float) this.parentWidth - 6.0F, (float) this.parentHeight - 37.0F, (float) (this.map_x * 0.001),
-					(float) (this.map_y * 0.001), (float) (this.zoomFactor / 20.0F), (float) (this.zoomFactor / 20.0F));
+					 this.parentWidth - 6.0F,  this.parentHeight - 37.0F,  this.map_x * 0.001F,
+					this.map_y * 0.001F,  this.zoomFactor / 20.0F, this.zoomFactor / 20.0F);
 			for (int i = 0; i < this.markerList.size(); ++i) {
-				this.markerList.get(i).textureButton.setLocalPositionX((int) Math.round(
-						(((((this.markerList.get(i).worldX * (4096.0F / (hud.getWorld().getWorldSize()))) / 4096.0F)
-								* 1000.0F) - this.map_x - this.zoomFactor) / (this.zoomFactor * 50.0F))
-								* (this.parentWidth - 6.0F)));
-				this.markerList.get(i).textureButton.setLocalPositionY((int) Math.round(
-						(((((this.markerList.get(i).worldY * (4096.0F / (hud.getWorld().getWorldSize()))) / 4096.0F)
-								* 1000.0F) - this.map_y - this.zoomFactor - 1.0F) / (this.zoomFactor * 50.0F))
-								* (this.parentHeight - 37.0F)));
+				this.markerList.get(i).textureButton.setLocalPositionX((int) Math
+						.round((((((double) this.markerList.get(i).worldX / hud.getWorld().getWorldSize()) * 1000.0)
+								- this.map_x + 0.2) / (this.zoomFactor * 50.0)) * (this.parentWidth - 6.0)));
+				this.markerList.get(i).textureButton.setLocalPositionY((int) Math
+						.round(((((double) this.markerList.get(i).worldY / hud.getWorld().getWorldSize() * 1000.0)
+								- this.map_y - 0.7) / (this.zoomFactor * 50.0)) * (this.parentHeight - 37.0)));
 				this.markerList.get(i).gameTick(this.x, this.y);
 				this.markerList.get(i).render(queue);
 			}
@@ -140,8 +138,8 @@ public class BetterMapView extends FlexComponent {
 				this.map_y += 25;
 			}
 		}
-		this.map_x = Math.min(Math.max(map_x, 0), 1000 - (this.zoomFactor * 50));
-		this.map_y = Math.min(Math.max(map_y, 0), 1000 - (this.zoomFactor * 50));
+		this.map_x = Math.min(Math.max(this.map_x, 0), 1000 - (this.zoomFactor * 50));
+		this.map_y = Math.min(Math.max(this.map_y, 0), 1000 - (this.zoomFactor * 50));
 	}
 
 	private float screenToMap(int num) {

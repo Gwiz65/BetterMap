@@ -53,7 +53,7 @@ import javassist.NotFoundException;
 
 public class BetterMap implements WurmClientMod, Initable, Versioned, ConsoleListener {
 
-	private static final String version = "1.2";
+	private static final String version = "1.3";
 	private BetterMapWindow betterMapWindow;
 
 	@CallbackApi
