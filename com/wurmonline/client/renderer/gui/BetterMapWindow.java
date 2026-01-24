@@ -5,7 +5,7 @@
  * distribute this software, either in source code form or as a compiled
  * binary, for any purpose, commercial or non-commercial, and by any
  * means.
- * 
+ *
  * In jurisdictions that recognize copyright laws, the author or authors
  * of this software dedicate any and all copyright interest in the
  * software to the public domain. We make this dedication for the benefit
@@ -13,7 +13,7 @@
  * successors. We intend this dedication to be an overt act of
  * relinquishment in perpetuity of all present and future rights to this
  * software under copyright law.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -21,7 +21,7 @@
  * OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
- * 
+ *
  * For more information, please refer to <http://unlicense.org/>
 */
 
@@ -66,6 +66,7 @@ public class BetterMapWindow extends WWindow {
 		}
 	}
 
+	@Override
 	protected void closePressed() {
 		hud.hideComponent(this);
 	}
@@ -74,6 +75,7 @@ public class BetterMapWindow extends WWindow {
 		hud.toggleComponent(this);
 	}
 
+	@Override
 	protected void componentResized() {
 		this.width = Math.min(Math.max(this.width, 106), hud.getWidth());
 		this.height = this.width + 31;
@@ -85,5 +87,4 @@ public class BetterMapWindow extends WWindow {
 		this.betterMapView.parentHeight = this.height;
 		super.componentResized();
 	}
-
 }

@@ -5,7 +5,7 @@
  * distribute this software, either in source code form or as a compiled
  * binary, for any purpose, commercial or non-commercial, and by any
  * means.
- * 
+ *
  * In jurisdictions that recognize copyright laws, the author or authors
  * of this software dedicate any and all copyright interest in the
  * software to the public domain. We make this dedication for the benefit
@@ -13,7 +13,7 @@
  * successors. We intend this dedication to be an overt act of
  * relinquishment in perpetuity of all present and future rights to this
  * software under copyright law.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -21,7 +21,7 @@
  * OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
- * 
+ *
  * For more information, please refer to <http://unlicense.org/>
 */
 
@@ -57,7 +57,7 @@ public class BetterMapView extends FlexComponent {
 		this.zoomFactor = 20;
 		this.map_x = 0;
 		this.map_y = 0;
-		this.markerList = new ArrayList<BetterMapMarker>();
+		this.markerList = new ArrayList<>();
 	}
 
 	public void LoadXml(String mapname) {
@@ -78,48 +78,51 @@ public class BetterMapView extends FlexComponent {
 				int ypos = 0;
 				int type = 0;
 				final List<XmlNode> markerProperties = markernode.getChildren();
-				for (int i = 0; i < markerProperties.size(); ++i) {
-					final XmlNode property = markerProperties.get(i);
+				for (final XmlNode property : markerProperties) {
 					final String propertyName = property.getName();
-					if (propertyName.equalsIgnoreCase("name"))
+					if (propertyName.equalsIgnoreCase("name")) {
 						name = property.getText();
-					else if (propertyName.equalsIgnoreCase("xpos"))
+					} else if (propertyName.equalsIgnoreCase("xpos")) {
 						xpos = Integer.parseInt(property.getText());
-					else if (propertyName.equalsIgnoreCase("ypos"))
+					} else if (propertyName.equalsIgnoreCase("ypos")) {
 						ypos = Integer.parseInt(property.getText());
-					else if (propertyName.equalsIgnoreCase("type"))
+					} else if (propertyName.equalsIgnoreCase("type")) {
 						type = Integer.parseInt(property.getText());
+					}
 				}
 				this.markerList.add(new BetterMapMarker(name, xpos, ypos, type));
 			}
 		}
 	}
 
+	@Override
 	public void pick(PickData pickData, int xMouse, int yMouse) {
-		for (int i = 0; i < this.markerList.size(); ++i) {
-			this.markerList.get(i).pick(pickData, xMouse, yMouse);
+		for (BetterMapMarker element : this.markerList) {
+			element.pick(pickData, xMouse, yMouse);
 		}
 	}
 
+	@Override
 	protected void renderComponent(Queue queue, float alpha) {
 		super.renderComponent(queue, alpha);
 		if (this.texture != null) {
-			Renderer.texturedQuadAlphaBlend(queue, this.texture, 1.0F, 1.0F, 1.0F, 1.0F, (float) this.x, (float) this.y,
+			Renderer.texturedQuadAlphaBlend(queue, this.texture, 1.0F, 1.0F, 1.0F, 1.0F, this.x, this.y,
 					 this.parentWidth - 6.0F,  this.parentHeight - 37.0F,  this.map_x * 0.001F,
 					this.map_y * 0.001F,  this.zoomFactor / 20.0F, this.zoomFactor / 20.0F);
-			for (int i = 0; i < this.markerList.size(); ++i) {
-				this.markerList.get(i).textureButton.setLocalPositionX((int) Math
-						.round((((((double) this.markerList.get(i).worldX / hud.getWorld().getWorldSize()) * 1000.0)
+			for (BetterMapMarker element : this.markerList) {
+				element.textureButton.setLocalPositionX((int) Math
+						.round((((((double) element.worldX / hud.getWorld().getWorldSize()) * 1000.0)
 								- this.map_x + 0.2) / (this.zoomFactor * 50.0)) * (this.parentWidth - 6.0)));
-				this.markerList.get(i).textureButton.setLocalPositionY((int) Math
-						.round(((((double) this.markerList.get(i).worldY / hud.getWorld().getWorldSize() * 1000.0)
+				element.textureButton.setLocalPositionY((int) Math
+						.round(((((double) element.worldY / hud.getWorld().getWorldSize() * 1000.0)
 								- this.map_y - 0.7) / (this.zoomFactor * 50.0)) * (this.parentHeight - 37.0)));
-				this.markerList.get(i).gameTick(this.x, this.y);
-				this.markerList.get(i).render(queue);
+				element.gameTick(this.x, this.y);
+				element.render(queue);
 			}
 		}
 	}
 
+	@Override
 	protected void mouseWheeled(int xMouse, int yMouse, int wheelDelta) {
 		int oldZoomfactor = this.zoomFactor;
 		if (wheelDelta > 0) {
@@ -146,6 +149,7 @@ public class BetterMapView extends FlexComponent {
 		return (num * (this.zoomFactor * 50)) / (this.parentWidth - 6);
 	}
 
+	@Override
 	protected void mouseDragged(int xMouse, int yMouse) {
 		this.map_x += (int) Math.ceil(screenToMap(this.lastMouseX) - screenToMap(xMouse));
 		this.map_y += (int) Math.ceil(screenToMap(this.lastMouseY) - screenToMap(yMouse));
@@ -155,6 +159,7 @@ public class BetterMapView extends FlexComponent {
 		this.lastMouseY = yMouse;
 	}
 
+	@Override
 	protected void leftPressed(int xMouse, int yMouse, int clickCount) {
 		this.lastMouseX = xMouse;
 		this.lastMouseY = yMouse;
